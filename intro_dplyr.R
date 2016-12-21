@@ -26,3 +26,21 @@ head(my_gap)
 my_gap %>% 
   filter(country == "Canada") %>% 
   select(country, year, gdpPercapRel)
+
+my_gap %>%
+  arrange(year, country)
+
+my_gap %>%
+  rename(life_exp = lifeExp,
+         gdp_percap = gdpPercap,
+         gdp_percap_rel = gdpPercapRel)
+
+my_gap %>%
+  filter(country == "Burundi", year > 1996) %>% 
+  select(yr = year, lifeExp, gdpPercap) %>% 
+  select(gdpPercap, everything())
+
+my_gap %>%
+  group_by(continent) %>%
+  summarize(n = n(),
+            n_countries = n_distinct(country))
