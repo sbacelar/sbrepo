@@ -1,6 +1,10 @@
 # Atlas of Economic Complexity
 #
-X<-matrix(c(1,1,1,1,0,1,0,0,0,0,1,1,0,0,0,1), + 4,4,byrow=T)
+# X<-matrix(c(1,1,1,1,0,1,0,0,0,0,1,1,0,0,0,1), + 4,4,byrow=T)
+
+# Diagonal igual a zero
+X<-matrix(c(0,1,1,1,1,0,0,0,0,0,0,1,0,0,1,0), + 4,4,byrow=T)
+# X<-matrix(c(0,1,1,1,1,1,0,0,0,1,0,0,0,1,1,0,0,0,0,1,0,1,1,1,0), + 5,5,byrow=T)
 X
 kc_1 <- rowSums(X) # Diversity
 kp_1 <- colSums(X) # Ubiquity
@@ -26,3 +30,4 @@ kp_3_b <- diag(1/kp_1) %*% t(X) %*% diag(1/kc_1) %*% X %*% kp_1 # right
 Mp <- diag(1/kp_1) %*% t(X) %*% diag(1/kc_1) %*% X
 e2 <- eigen(Mp)
 PCI <- e2$vectors[,2]
+
